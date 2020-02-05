@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
     if (!dataLoadingFailed && !dataLoaded) {
-      getData("https://5e3ae184f2cb300014390d21.mockapi.io/users");
+      getData("http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}");
     }
   });
 
@@ -35,6 +35,9 @@ function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
           <TableRow key={item.id}>
             <td>{item.id}</td>
             <td>{item.name}</td>
+            <td>{item.lastName}</td>
+            <td>{item.email}</td>
+            <td>{item.phone}</td>
           </TableRow>
         ))}
         </tbody>
