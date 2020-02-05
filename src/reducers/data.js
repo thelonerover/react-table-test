@@ -4,18 +4,18 @@ const initialState = {
   data: []
 }
 
-function data(state, action) {
+export default function data(state, action) {
   if (typeof state === "undefined") {
     return initialState;
   }
 
-  switch(action.type) {
-      case actionTypes.getData:
-          return [...state, ]
+//   switch(action.type) {
+//       case actionTypes.getData:
+//           return [...state, ]
         
-      default: 
-        return state;
-  }
+//       default: 
+//         return state;
+//   }
 
   return state;
 }
