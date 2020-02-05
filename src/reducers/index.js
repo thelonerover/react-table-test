@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import {
-    data,
+    setData as data,
     dataIsLoading,
-    dataLoadingFailed,
-    dataLoadingSucceed
+    dataLoaded,
+    dataLoadingFailed
 } from './data';
 
 export default combineReducers({
     data,
     dataIsLoading,
-    dataLoadingFailed,
-    dataLoadingSucceed
+    dataLoaded,
+    dataLoadingFailed
 })

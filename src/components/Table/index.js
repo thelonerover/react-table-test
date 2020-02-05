@@ -1,46 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TableHead from "./TableHead";
 import TableRow from "./TableRow";
-// import { testData } from "../../testData";
-import { dataFetch } from "../../actions";
+import { dataFetch, dataIsLoading } from "../../actions";
 import { connect } from 'react-redux';
 import "./table.scss";
 
-const mapStateToProps = ({ data, dataLoadingFailed, dataLoadingSuccess }) => {
+const mapStateToProps = ({ data, dataLoaded, dataLoadingFailed}) => {
   return {
     data: data,
-    loadingFailed: dataLoadingFailed,
-    loadingSuccess: dataLoadingSuccess
+    dataLoaded: dataLoaded,
+    dataLoadingFailed: dataLoadingFailed
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      getData: (url) => dispatch(dataFetch(url))
+  };
+};
+
+function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
+  useEffect(() => {
+    if (!dataLoadingFailed && !dataLoaded) {
+      getData("https://5e3ae184f2cb300014390d21.mockapi.io/users");
+    }
+  });
+
+  if (dataLoaded) {
+    return (
+      <table className="table">
+        <TableHead />
+        <tbody>
+        {data.map((item) => (
+          <TableRow key={item.id}>
+            <td>{item.id}</td>
+            <td>{item.name}</td>
+          </TableRow>
+        ))}
+        </tbody>
+      </table>
+    );
+  } else {
+    return (
+      <p>loading</p>
+    );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dataFetch: (url) => dispatch(dataFetch(url))
-  };
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
 
-function Table() {
-  return (
-    <table className="table">
-      <TableHead />
-      <tbody>
-        
-      </tbody>
-    </table>
-  );
-}
-
-export default Table;
-
-connect(mapStateToProps, mapDispatchToProps)(Table);
-
-// {testData.map((item, index) => (
-//   <TableRow key={index}>
-//     <td className="table__item">{item.id}</td>
-//     <td className="table__item">{item.firstName}</td>
-//     <td className="table__item">{item.lastName}</td>
-//     <td className="table__item">{item.email}</td>
-//     <td className="table__item">{item.phone}</td>
-//   </TableRow>
-// ))}

@@ -16,15 +16,19 @@ export const dataLoadingFailed = (state = false, action) => {
   return state;
 }
 
-export const dataLoadingSucceed = (state = false, action) => {
-  if (action.type === actionTypes.dataLoadingSuccess) {
-    return [...state, action.data];
+export const dataLoaded = (state = false, action) => {
+  if (action.type === actionTypes.dataLoaded) {
+    return action.loaded;
   }
 
   return state;
 }
 
-export const data = (state = [], action) => {
+export const setData = (state = [], action) => {
+  if (action.type === actionTypes.setData) {
+    return [...state, ...action.data];
+  }
+
   return state;
 }
 
