@@ -1,31 +1,43 @@
 export const actionTypes = {
-    dataGet: "DATA_GET",
-    dataLoading: "DATA_LOADING",
+    dataFetch: "DATA_FETCH",
+    dataIsLoading: "DATA_IS_LOADING",
     dataLoadingFailed: "DATA_LOADING_FAILED",
     dataLoadingSuccess: "DATA_LOADING_SUCCESS",
     sortDescending: "SORT_DESCENDING",
     sortAscending: "SORT_ASCENDING"
 }
 
-export const dataGet = () => {
-    return (dispatch, getState) => {
-        return {
-            type: actionTypes.dataGet
-        }
+export const dataFetch = (url) => {
+    return (dispatch) => {
+        dispatch(dataIsLoading(true));
+
+        fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+
+            dispatch(dataIsLoading(false));
+
+            return response;
+        })
+        .then((response) => response.json())
+        .then((items) => dispatch(dataLoadingSuccess(items)))
+        .catch(() => dispatch(dataLoadingFailed()));
     }
 }
 
-export const dataLoading = (bool) => {
+export const dataIsLoading = (bool) => {
     return {
         type: actionTypes.dataLoading,
         loading: bool
     }
 }
 
-export const dataLoadingFailed = (bool) => {
+export const dataLoadingFailed = () => {
     return  {
         type: actionTypes.dataLoadingFailed,
-        hasErrored: bool
+        hasErrored: true
     }
 }
 
