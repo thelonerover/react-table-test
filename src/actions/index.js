@@ -22,7 +22,7 @@ export const dataFetch = (url) => {
             return response;
         })
         .then((response) => response.json())
-        .then((items) => dispatch(dataLoadingSuccess(items)))
+        .then((data) => dispatch(dataLoadingSuccess(data)))
         .catch(() => dispatch(dataLoadingFailed()));
     }
 }
@@ -41,10 +41,10 @@ export const dataLoadingFailed = () => {
     }
 }
 
-export const dataLoadingSuccess = (items) => {
+export const dataLoadingSuccess = (data) => {
     return {
         type: actionTypes.dataLoadingSuccess,
-        items
+        data
     }
 }
 

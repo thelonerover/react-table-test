@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import data from './data';
-import sorting from './sorting';
+import {
+    dataIsLoading,
+    dataLoadingFailed,
+    dataLoadingSuccess
+} from './data';
 
 export default combineReducers({
-    data,
-    sorting
+    dataIsLoading,
+    dataLoadingFailed,
+    dataLoadingSuccess
 })
