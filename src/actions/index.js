@@ -2,7 +2,7 @@ export const actionTypes = {
     dataFetch: "DATA_FETCH",
     dataIsLoading: "DATA_IS_LOADING",
     dataLoadingFailed: "DATA_LOADING_FAILED",
-    dataLoadingSuccess: "DATA_LOADING_SUCCESS",
+    dataLoadingSucceed: "DATA_LOADING_SUCCEED",
     sortDescending: "SORT_DESCENDING",
     sortAscending: "SORT_ASCENDING"
 }
@@ -22,7 +22,7 @@ export const dataFetch = (url) => {
             return response;
         })
         .then((response) => response.json())
-        .then((data) => dispatch(dataLoadingSuccess(data)))
+        .then((data) => dispatch(dataLoadingSucceed(data)))
         .catch(() => dispatch(dataLoadingFailed()));
     }
 }
@@ -41,9 +41,9 @@ export const dataLoadingFailed = () => {
     }
 }
 
-export const dataLoadingSuccess = (data) => {
+export const dataLoadingSucceed = (data) => {
     return {
-        type: actionTypes.dataLoadingSuccess,
+        type: actionTypes.dataLoadingSucceed,
         data
     }
 }
