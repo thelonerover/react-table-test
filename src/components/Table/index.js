@@ -1,7 +1,8 @@
 import React from "react";
-import TableHead from "../TableHead";
-import TableRow from "../TableRow";
+import TableHead from "./TableHead";
+import TableRow from "./TableRow";
 import { testData } from "../../testData";
+import "./table.scss";
 
 function Table() {
   return (
@@ -10,11 +11,11 @@ function Table() {
       <tbody>
         {testData.map((item, index) => (
           <TableRow key={index}>
-            <td>{item.id}</td>
-            <td>{item.firstName}</td>
-            <td>{item.lastName}</td>
-            <td>{item.email}</td>
-            <td>{item.phone}</td>
+            <td className="table__item">{item.id}</td>
+            <td className="table__item">{item.firstName}</td>
+            <td className="table__item">{item.lastName}</td>
+            <td className="table__item">{item.email}</td>
+            <td className="table__item">{item.phone}</td>
           </TableRow>
         ))}
       </tbody>
