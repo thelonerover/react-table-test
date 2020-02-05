@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import TableHead from "./TableHead";
 import TableRow from "./TableRow";
-import { dataFetch, dataIsLoading } from "../../actions";
+import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
 import "./table.scss";
 
@@ -33,11 +33,11 @@ function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
         <tbody>
         {data.map((item) => (
           <TableRow key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
-            <td>{item.lastName}</td>
-            <td>{item.email}</td>
-            <td>{item.phone}</td>
+            <td className="table__item">{item.id}</td>
+            <td className="table__item">{item.firstName}</td>
+            <td className="table__item">{item.lastName}</td>
+            <td className="table__item">{item.email}</td>
+            <td className="table__item">{item.phone}</td>
           </TableRow>
         ))}
         </tbody>

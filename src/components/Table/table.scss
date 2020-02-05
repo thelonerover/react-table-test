@@ -1,6 +1,12 @@
 .table{
     &__item {
-        padding: 1rem;
+        padding: .5rem 1rem;
         text-align: left;
+    }
+
+    &__row {
+        &:nth-child(2n) {
+            background-color: #f1f1f1;
+        }
     }
 }
