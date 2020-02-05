@@ -32,6 +32,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "redux-thunk": "^2.3.0"
   }
 }
