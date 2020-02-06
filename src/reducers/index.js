@@ -5,12 +5,16 @@ import {
     dataLoaded,
     dataLoadingFailed
 } from './data';
-import { currentPage } from "./tableData";
+import { 
+    currentPage, 
+    setDataPerPage as dataPerPage
+} from "./tableData";
 
 export default combineReducers({
     data,
     dataIsLoading,
     dataLoaded,
     dataLoadingFailed,
-    currentPage
+    currentPage,
+    dataPerPage
 })

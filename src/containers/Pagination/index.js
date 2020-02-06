@@ -2,6 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setPage } from "../../actions";
+import "./pagination.scss";
 
 const mapStateToProps = state => {
     return {
@@ -32,14 +33,14 @@ function Pagination({ currentPage, pages, onClick }) {
   return (
       <div className="pagination">
             <button 
-                className="button"
+                className="pagination__button"
                 onClick={handlePrev}
             >Prev</button>
             <span className="pagination__page-number">
                 {`${currentPage} / ${pages}`}
             </span>
             <button 
-                className="button"
+                className="pagination__button"
                 onClick={handleNext}
             >Next</button>
       </div>

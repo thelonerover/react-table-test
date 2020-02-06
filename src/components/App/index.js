@@ -8,8 +8,8 @@ import "./App.scss";
 function App() {
   return (
     <div className="app">
-      <Pagination />
       <Table />
+      <Pagination />
     </div>
   );
 }

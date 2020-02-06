@@ -1,0 +1,13 @@
+.pagination {
+    &__button {
+        font-size: 1.5rem;
+        vertical-align: middle;
+    }
+
+    &__page-number {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        font-size: 2em;
+        vertical-align: middle;
+    }
+}

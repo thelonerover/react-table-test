@@ -4,7 +4,7 @@ import TableRow from "../../components/Table/TableRow";
 
 const mapStateToProps = state => {
     return {
-        data: state.data
+        data: state.data.slice((state.currentPage - 1) * state.dataPerPage, state.dataPerPage * state.currentPage)
     }
 }
 

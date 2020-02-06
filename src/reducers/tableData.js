@@ -7,4 +7,12 @@ export const currentPage = (state = 1, action) => {
 
     return state;
 }
+
+export const setDataPerPage = (state = 50, action) => {
+    if (action.type === actionTypes.dataPerPage) {
+        return action.dataPerPage;
+    }
+
+    return state;
+}
   

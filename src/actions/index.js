@@ -4,7 +4,8 @@ export const actionTypes = {
     dataLoadingFailed: "DATA_LOADING_FAILED",
     dataLoaded: "DATA_LOADED",
     setData: "SET_DATA",
-    setPage: "SET_PAGE"
+    setPage: "SET_PAGE",
+    setDataPerPage: "SET_DATA_PER_PAGE",
     // sortDescending: "SORT_DESCENDING",
     // sortAscending: "SORT_ASCENDING"
 };
@@ -53,6 +54,11 @@ export const setData = data => ({
 export const setPage = page => ({
     type: actionTypes.setPage,
     page
+});
+
+export const setDataPerPage = number => ({
+    type: actionTypes.setDataPerPage,
+    number
 });
 
 // export const sortDescending = (field) => {
