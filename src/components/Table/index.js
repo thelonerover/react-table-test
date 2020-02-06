@@ -19,10 +19,14 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const dataUrl = "https://5e3ae184f2cb300014390d21.mockapi.io/users";
+
+const biggerDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}";
+
 export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
     if (!dataLoadingFailed && !dataLoaded) {
-      getData("https://5e3ae184f2cb300014390d21.mockapi.io/users");
+      getData(biggerDataUrl);
     }
   });
 
@@ -35,7 +39,7 @@ export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
     );
   } else {
     return (
-      <p>loading</p>
+      <p>Data is loading...</p>
     );
   }
 }

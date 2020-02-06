@@ -6,7 +6,7 @@ import "./pagination.scss";
 
 const mapStateToProps = state => {
     return {
-        pages: Math.ceil(state.data.length / 50),
+        pages: Math.ceil(state.data.length / state.dataPerPage),
         currentPage: state.currentPage
     }
 }
