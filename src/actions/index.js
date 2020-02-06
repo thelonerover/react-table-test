@@ -6,8 +6,8 @@ export const actionTypes = {
     setData: "SET_DATA",
     setPage: "SET_PAGE",
     setDataPerPage: "SET_DATA_PER_PAGE",
-    // sortDescending: "SORT_DESCENDING",
-    // sortAscending: "SORT_ASCENDING"
+    sortDescend: "SORT_DESCEND",
+    sortAscend: "SORT_ASCEND"
 };
 
 export const dataFetch = (url) => {
@@ -61,16 +61,16 @@ export const setDataPerPage = number => ({
     number
 });
 
-// export const sortDescending = (field) => {
-//     return {
-//         type: actionTypes.sortDescending,
-//         field: field
-//     }
-// }
+export const sortDescend = (field) => {
+    return {
+        type: actionTypes.sortDescend,
+        field
+    }
+};
 
-// export const sortAscending = (field) => {
-//     return {
-//         type: actionTypes.sortAscending,
-//         field: field
-//     }
-// }
+export const sortAscend = (field) => {
+    return {
+        type: actionTypes.sortAscend,
+        field
+    }
+};

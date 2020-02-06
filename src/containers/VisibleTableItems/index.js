@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TableRow from "../../components/Table/TableRow";
+import TableRow from "../../components/TableRow"; 
 
 const mapStateToProps = state => {
     return {

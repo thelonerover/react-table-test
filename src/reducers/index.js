@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import {
-    setData as data,
+    data,
     dataIsLoading,
     dataLoaded,
     dataLoadingFailed

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
-import TableHead from "./TableHead";
+import TableHead from "../TableHead";
 import VisibleTableItems from "../../containers/VisibleTableItems";
 import "./table.scss";
 
@@ -26,7 +26,7 @@ const biggerDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&first
 export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
     if (!dataLoadingFailed && !dataLoaded) {
-      getData(biggerDataUrl);
+      getData(dataUrl);
     }
   });
 
