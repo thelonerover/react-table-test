@@ -1,15 +1,15 @@
 import React from "react";
-import Table from "../Table";
-import Info from "../Info";
 import Button from "../Button";
+import Table from "../Table";
+import Pagination from "../../containers/Pagination";
+import Info from "../Info";
 import "./App.scss";
 
 function App() {
   return (
     <div className="app">
-      <Button />
+      <Pagination />
       <Table />
-      {/* <Info /> */}
     </div>
   );
 }

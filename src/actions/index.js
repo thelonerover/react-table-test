@@ -4,9 +4,10 @@ export const actionTypes = {
     dataLoadingFailed: "DATA_LOADING_FAILED",
     dataLoaded: "DATA_LOADED",
     setData: "SET_DATA",
-    sortDescending: "SORT_DESCENDING",
-    sortAscending: "SORT_ASCENDING"
-}
+    setPage: "SET_PAGE"
+    // sortDescending: "SORT_DESCENDING",
+    // sortAscending: "SORT_ASCENDING"
+};
 
 export const dataFetch = (url) => {
     return (dispatch) => {
@@ -27,7 +28,7 @@ export const dataFetch = (url) => {
         .then(data => dispatch(setData(data)))
         .catch(() => dispatch(dataLoadingFailed()));
     }
-}
+};
 
 export const dataIsLoading = bool => ({
     type: actionTypes.dataIsLoading,
@@ -37,17 +38,22 @@ export const dataIsLoading = bool => ({
 export const dataLoadingFailed = () => ({
     type: actionTypes.dataLoadingFailed,
     hasErrored: true
-})
+});
 
 export const dataLoaded = () => ({
     type: actionTypes.dataLoaded,
     loaded: true
-})
+});
 
 export const setData = data => ({
     type: actionTypes.setData,
     data
-})
+});
+
+export const setPage = page => ({
+    type: actionTypes.setPage,
+    page
+});
 
 // export const sortDescending = (field) => {
 //     return {

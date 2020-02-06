@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import TableHead from "./TableHead";
-import TableRow from "./TableRow";
 import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
+import TableHead from "./TableHead";
+import VisibleTableItems from "../../containers/VisibleTableItems";
 import "./table.scss";
 
 const mapStateToProps = ({ data, dataLoaded, dataLoadingFailed}) => {
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
+export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
     if (!dataLoadingFailed && !dataLoaded) {
       getData("https://5e3ae184f2cb300014390d21.mockapi.io/users");
@@ -30,17 +30,7 @@ function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
     return (
       <table className="table">
         <TableHead />
-        <tbody>
-        {data.map((item) => (
-          <TableRow key={item.id}>
-            <td className="table__item">{item.id}</td>
-            <td className="table__item">{item.firstName}</td>
-            <td className="table__item">{item.lastName}</td>
-            <td className="table__item">{item.email}</td>
-            <td className="table__item">{item.phone}</td>
-          </TableRow>
-        ))}
-        </tbody>
+        <VisibleTableItems />
       </table>
     );
   } else {
@@ -51,4 +41,3 @@ function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
-
