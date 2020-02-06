@@ -9,10 +9,10 @@ const mapStateToProps = state => {
 }
 
 export function VisibleTableItems({ data }) {
-    console.log(data)
     return (
         <tbody>
             {data.map((item, index) => (
+                //Got a sneaky bug here. I wanted to use item id's as keys, but they seem to have doubles causing accidental item duplication.
                 <TableRow key={index}>
                     <td className="table__item">{item.id}</td>
                     <td className="table__item">{item.firstName}</td>
