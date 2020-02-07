@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { sortAscend, sortDescend } from "../../actions";
 
@@ -10,19 +10,36 @@ const mapDispatchToProps = dispatch => {
 };
 
 function TableHeadItem({ field, children, sortAscend, sortDescend }) {
-  let ascend = true;
+  const [sortType, setSortType] = useState("unset");
 
-  const handleClick = field => {
-    ascend ? sortAscend(field) : sortDescend(field);
-    ascend = !ascend;
+  const handleClick = (field, sortType) => {
+    sortType === "ascend" ? sortAscend(field) : sortDescend(field);
+  }
+
+  const changeType = () => {
+    switch(sortType) {
+      case "ascend":
+        setSortType("descend");
+        break;
+      case "descend":
+        setSortType("ascend");
+        break;
+      default: 
+        setSortType("ascend");
+        break;
+    }
   }
 
   return (
     <th 
       className="table__item table__head-item"
-      onClick={() => {handleClick(field)}}
+      onClick={() => {
+        changeType();
+        handleClick(field, sortType);
+      }}
     >
       {children}
+      <span className={`table__sort table__sort_${sortType}`}>▼</span>
     </th>
   );
 }

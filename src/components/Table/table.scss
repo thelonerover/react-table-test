@@ -10,15 +10,19 @@
         }
     }
 
-    &__filter {
-        float: right;
-    }
-
-    &__filter_active {
+    &__head-item_active {
         background-color: #888888;
     }
 
-    &__filter_ascend {
+    &__sort {
+        float: right;
+    }
+
+    &__sort_unset {
+        transform: rotate(90deg);
+    }
+
+    &__sort_ascend {
         transform: rotate(180deg);
     }
 
