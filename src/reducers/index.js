@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import {
-    data,
+    data as dataCache,
     dataIsLoading,
     dataLoaded,
     dataLoadingFailed,
-    selectedDataItem
+    selectedDataItem,
+    visibleData
 } from './data';
 import { 
     currentPage, 
@@ -16,12 +17,13 @@ import {
 } from "./sortedField";
 
 export default combineReducers({
-    data,
+    dataCache,
     dataIsLoading,
     dataLoaded,
     dataLoadingFailed,
     currentPage,
     dataPerPage,
     sortedField,
-    selectedDataItem
+    selectedDataItem,
+    visibleData
 })

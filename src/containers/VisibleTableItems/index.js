@@ -5,7 +5,7 @@ import { getDataItem } from "../../actions";
 
 const mapStateToProps = state => {
     return {
-        data: state.data.slice((state.currentPage - 1) * state.dataPerPage, state.dataPerPage * state.currentPage)
+        data: state.visibleData.slice((state.currentPage - 1) * state.dataPerPage, state.dataPerPage * state.currentPage)
     }
 }
 

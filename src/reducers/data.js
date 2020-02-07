@@ -25,36 +25,63 @@ export const dataLoaded = (state = false, action) => {
 }
 
 export const data = (state = [], action) => {
-  
-  if (action.type === actionTypes.setData) {
-    return [...state, ...action.data];
+  switch(action.type) {
+    case actionTypes.setDataCache:
+      return [...action.data];
+
+    case actionTypes.sortAscend: 
+      if (!isNaN(+state[0][action.field])) {
+        return [...state.sort((a, b) => (
+          a[action.field]- b[action.field]
+        ))]
+      }
+
+      return [...state.sort((a, b) => (
+        a[action.field].localeCompare(b[action.field])
+      ))];
+
+    case actionTypes.sortDescend: 
+      if (!isNaN(+state[0][action.field])) {
+        return [...state.sort((a, b) => (
+          b[action.field]- a[action.field]
+        ))]
+      }
+
+      return [...state.sort((a, b) => (
+        b[action.field].localeCompare(a[action.field])
+      ))];
+
+    default: 
+      return state;
+  }
+}
+
+export const visibleData = (state = [], action) => {
+  if (action.type === actionTypes.setVisibleData) {
+    return [...action.data];
   }
 
-  if (action.type === actionTypes.sortAscend) {
-    if (!isNaN(+state[0][action.field])) {
-      return [...state.sort((a, b) => (
-        a[action.field]- b[action.field]
-      ))]
+  switch(action.type) {
+    case actionTypes.setVisibleData:
+      return [...action.data];
+
+  case actionTypes.filterData:
+    if (action.filter !== "") {
+      return [...action.data.filter(item => {
+        for (let field in item) {
+          if (item[field].toLowerCase().includes(action.filter.toLowerCase())) {
+            return true;
+          }
+        }
+        return false;
+      })];
+    } else {
+      return action.data;
     }
 
-    return [...state.sort((a, b) => (
-      a[action.field].localeCompare(b[action.field])
-    ))];
+    default: 
+      return state;
   }
-  
-  if (action.type === actionTypes.sortDescend) {
-    if (!isNaN(+state[0][action.field])) {
-      return [...state.sort((a, b) => (
-        b[action.field]- a[action.field]
-      ))]
-    }
-
-    return [...state.sort((a, b) => (
-      b[action.field].localeCompare(a[action.field])
-    ))];
-  }
-
-  return state;
 }
 
 export const selectedDataItem = (state = {}, action) => {

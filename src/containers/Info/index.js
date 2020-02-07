@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 export function Info({ dataItem }) {
     return (
-        <div className="Info">
+        <div className="info">
             <span className="info__item">
                 Выбран пользователь: <b>{dataItem.firstName}</b>
             </span>

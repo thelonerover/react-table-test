@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { dataFetch } from "../../actions";
+import { dataFetch, setDataCache, setVisibleData } from "../../actions";
 import { connect } from 'react-redux';
 import TableHead from "../../components/TableHead";
 import VisibleTableItems from "../VisibleTableItems";
 import "./table.scss";
 
-const mapStateToProps = ({ data, dataLoaded, dataLoadingFailed}) => {
+const mapStateToProps = ({ dataCache, dataLoaded, dataLoadingFailed }) => {
   return {
-    data: data,
+    data: dataCache,
     dataLoaded: dataLoaded,
     dataLoadingFailed: dataLoadingFailed
   }
@@ -15,7 +15,7 @@ const mapStateToProps = ({ data, dataLoaded, dataLoadingFailed}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      getData: (url) => dispatch(dataFetch(url))
+      getData: url => {dispatch(dataFetch(url))}
   };
 };
 
@@ -25,10 +25,8 @@ const biggerDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&first
 
 export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
-    if (!dataLoadingFailed && !dataLoaded) {
-      getData(dataUrl);
-    }
-  });
+    getData(dataUrl);
+  }, []);
 
   if (dataLoaded) {
     return (
@@ -37,10 +35,14 @@ export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
         <VisibleTableItems />
       </table>
     );
-  } else {
+  } else if (dataLoadingFailed) {
     return (
-      <p>Data is loading...</p>
+      <p>Data loading failed!</p>
     );
+  } else {
+      return (
+        <p>Data is loading...</p>
+      );
   }
 }
 

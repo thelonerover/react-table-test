@@ -3,7 +3,8 @@ export const actionTypes = {
     dataIsLoading: "DATA_IS_LOADING",
     dataLoadingFailed: "DATA_LOADING_FAILED",
     dataLoaded: "DATA_LOADED",
-    setData: "SET_DATA",
+    setDataCache: "SET_DATA_CACHE",
+    setVisibleData: "SET_VISIBLE_DATA",
     setPage: "SET_PAGE",
     setDataPerPage: "SET_DATA_PER_PAGE",
     sortDescend: "SORT_DESCEND",
@@ -30,8 +31,11 @@ export const dataFetch = (url) => {
             return response;
         })
         .then(response => (response.json()))
-        .then(data => dispatch(setData(data)))
-        .catch(() => dispatch(dataLoadingFailed()));
+        .then(data => {
+            dispatch(setDataCache(data));
+            dispatch(setVisibleData(data));
+        })
+        .catch(() => {dispatch(dataLoadingFailed())});
     }
 };
 
@@ -50,8 +54,13 @@ export const dataLoaded = () => ({
     loaded: true
 });
 
-export const setData = data => ({
-    type: actionTypes.setData,
+export const setVisibleData = data => ({
+    type: actionTypes.setVisibleData,
+    data
+});
+
+export const setDataCache = data => ({
+    type: actionTypes.setDataCache,
     data
 });
 
@@ -93,10 +102,11 @@ export const getDataItem = dataItem => {
     }
 };
 
-export const filterData = filter => {
+export const filterData = (data, filter) => {
     return {
         type: actionTypes.filterData,
-        filter
+        filter,
+        data
     }
 };
 
