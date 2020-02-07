@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { sortAscend, sortDescend } from "../../actions";
+import { setSortedField, sortAscend, sortDescend } from "../../actions";
+
+const mapStateToProps = state => {
+  return {
+    sortedField: state.sortedField
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
+    setSortedField: field => {dispatch(setSortedField(field))},
     sortAscend: field => {dispatch(sortAscend(field))},
     sortDescend: field => {dispatch(sortDescend(field))}
   }
 };
 
-function TableHeadItem({ field, children, sortAscend, sortDescend }) {
+function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedField, sortedField }) {
   const [sortType, setSortType] = useState("unset");
 
   const handleClick = (field, sortType) => {
+    setSortedField(field);
     sortType === "ascend" ? sortAscend(field) : sortDescend(field);
   }
 
@@ -32,16 +40,16 @@ function TableHeadItem({ field, children, sortAscend, sortDescend }) {
 
   return (
     <th 
-      className="table__item table__head-item"
+      className={sortedField === field ? "table__item table__head-item table__head-item_active" : "table__item table__head-item"}
       onClick={() => {
         changeType();
         handleClick(field, sortType);
       }}
     >
       {children}
-      <span className={`table__sort table__sort_${sortType}`}>▼</span>
+      <span className={sortedField === field ? `table__sort table__sort_${sortType}` : "table__sort table__sort_unset"}>▼</span>
     </th>
   );
 }
 
-export default connect(null, mapDispatchToProps)(TableHeadItem);
+export default connect(mapStateToProps, mapDispatchToProps)(TableHeadItem);
