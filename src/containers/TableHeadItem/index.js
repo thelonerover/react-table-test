@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setSortedField, sortAscend, sortDescend } from "../../actions";
 
@@ -19,13 +19,19 @@ const mapDispatchToProps = dispatch => {
 function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedField, sortedField }) {
   const [sortType, setSortType] = useState("unset");
 
+  useEffect(() => {
+    if (sortedField !== field) {
+      setSortType("unset");
+    }
+  });
+
   const handleClick = (field, sortType) => {
-    changeType();
+    handleSortTypes();
     setSortedField(field);
     sortType === "ascend" ? sortAscend(field) : sortDescend(field);
   }
 
-  const changeType = () => {
+  const handleSortTypes = () => {
     switch(sortType) {
       case "ascend":
         setSortType("descend");
@@ -45,7 +51,7 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
       onClick={() => {handleClick(field, sortType)}}
     >
       {children}
-      <span className={sortedField === field ? `table__sort table__sort_${sortType}` : "table__sort table__sort_unset"}>▼</span>
+      <span className={`table__sort table__sort_${sortType}`}>▼</span>
     </th>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
-import TableHead from "../TableHead";
-import VisibleTableItems from "../../containers/VisibleTableItems";
+import TableHead from "../../components/TableHead";
+import VisibleTableItems from "../VisibleTableItems";
 import "./table.scss";
 
 const mapStateToProps = ({ data, dataLoaded, dataLoadingFailed}) => {

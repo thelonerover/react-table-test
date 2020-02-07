@@ -9,7 +9,9 @@ export const actionTypes = {
     sortDescend: "SORT_DESCEND",
     sortAscend: "SORT_ASCEND",
     setSortedField: "SET_SORTED_FIELD",
-    getDataItem: "SELECT_DATA_ITEM"
+    getDataItem: "SELECT_DATA_ITEM",
+    filterData: "FILTER_DATA",
+    addDataItem: "ADD_DATA_ITEM"
 };
 
 export const dataFetch = (url) => {
@@ -88,5 +90,19 @@ export const getDataItem = dataItem => {
     return {
         type: actionTypes.getDataItem,
         dataItem
+    }
+};
+
+export const filterData = filter => {
+    return {
+        type: actionTypes.filterData,
+        filter
+    }
+};
+
+export const addDataItem = item => {
+    return {
+        type: actionTypes.addDataItem,
+        item
     }
 };

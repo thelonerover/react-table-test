@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import Table from "../Table";
+import Table from "../../containers/Table";
 import Pagination from "../../containers/Pagination";
 import Info from "../../containers/Info";
 import "./App.scss";
