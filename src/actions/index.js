@@ -8,7 +8,8 @@ export const actionTypes = {
     setDataPerPage: "SET_DATA_PER_PAGE",
     sortDescend: "SORT_DESCEND",
     sortAscend: "SORT_ASCEND",
-    setSortedField: "SET_SORTED_FIELD"
+    setSortedField: "SET_SORTED_FIELD",
+    getDataItem: "SELECT_DATA_ITEM"
 };
 
 export const dataFetch = (url) => {
@@ -80,5 +81,12 @@ export const setSortedField = field => {
     return {
         type: actionTypes.setSortedField,
         field
+    }
+};
+
+export const getDataItem = dataItem => {
+    return {
+        type: actionTypes.getDataItem,
+        dataItem
     }
 };

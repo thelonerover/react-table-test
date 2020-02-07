@@ -56,3 +56,11 @@ export const data = (state = [], action) => {
 
   return state;
 }
+
+export const selectedDataItem = (state = {}, action) => {
+  if (action.type === actionTypes.getDataItem) {
+    return action.dataItem;
+  }
+
+  return state;
+}

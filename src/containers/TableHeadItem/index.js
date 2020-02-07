@@ -20,6 +20,7 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
   const [sortType, setSortType] = useState("unset");
 
   const handleClick = (field, sortType) => {
+    changeType();
     setSortedField(field);
     sortType === "ascend" ? sortAscend(field) : sortDescend(field);
   }
@@ -41,10 +42,7 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
   return (
     <th 
       className={sortedField === field ? "table__item table__head-item table__head-item_active" : "table__item table__head-item"}
-      onClick={() => {
-        changeType();
-        handleClick(field, sortType);
-      }}
+      onClick={() => {handleClick(field, sortType)}}
     >
       {children}
       <span className={sortedField === field ? `table__sort table__sort_${sortType}` : "table__sort table__sort_unset"}>▼</span>

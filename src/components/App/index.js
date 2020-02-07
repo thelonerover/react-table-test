@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button";
 import Table from "../Table";
 import Pagination from "../../containers/Pagination";
-import Info from "../Info";
+import Info from "../../containers/Info";
 import "./App.scss";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
     <div className="app">
       <Table />
       <Pagination />
+      <Info />
     </div>
   );
 }

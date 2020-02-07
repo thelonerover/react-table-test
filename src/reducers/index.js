@@ -3,7 +3,8 @@ import {
     data,
     dataIsLoading,
     dataLoaded,
-    dataLoadingFailed
+    dataLoadingFailed,
+    selectedDataItem
 } from './data';
 import { 
     currentPage, 
@@ -21,5 +22,6 @@ export default combineReducers({
     dataLoadingFailed,
     currentPage,
     dataPerPage,
-    sortedField
+    sortedField,
+    selectedDataItem
 })

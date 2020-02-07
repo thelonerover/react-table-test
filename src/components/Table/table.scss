@@ -6,12 +6,25 @@
         user-select: none;
 
         &:hover {
-            background-color: #f7f7f7;
+            color: #ffffff;
+            background-color: #777777;
+        }
+    }
+
+    &__row {
+        cursor: pointer;
+
+        &:nth-child(2n) {
+            background-color: #f1f1f1;
+        }
+
+        &:hover {
+            background-color: #f9f9f9;
         }
     }
 
     &__head-item_active {
-        background-color: #888888;
+        background-color: #999999;
     }
 
     &__sort {
@@ -30,11 +43,5 @@
         min-width: 8rem;
         padding: .5rem 1rem;
         text-align: left;
-    }
-
-    &__row {
-        &:nth-child(2n) {
-            background-color: #f1f1f1;
-        }
     }
 }

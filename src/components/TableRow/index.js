@@ -1,8 +1,8 @@
 import React from 'react';
 
-function TableRow({children}) {
+function TableRow({ children, onClick }) {
   return (
-    <tr className="table__row">
+    <tr className="table__row" onClick={onClick}>
       {children}
     </tr>
   );
