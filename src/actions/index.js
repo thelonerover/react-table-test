@@ -61,14 +61,14 @@ export const setDataPerPage = number => ({
     number
 });
 
-export const sortDescend = (field) => {
+export const sortDescend = field => {
     return {
         type: actionTypes.sortDescend,
         field
     }
 };
 
-export const sortAscend = (field) => {
+export const sortAscend = field => {
     return {
         type: actionTypes.sortAscend,
         field

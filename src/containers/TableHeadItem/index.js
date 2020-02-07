@@ -2,10 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { sortAscend, sortDescend } from "../../actions";
 
-const mapStateToProps = state => {
-
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     sortAscend: field => {dispatch(sortAscend(field))},
@@ -13,23 +9,22 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-function TableHeadItem({ children, sortAscend, sortDescend }) {
-  const handleSortAscend = () => {
-    sortAscend("id");
-  }
+function TableHeadItem({ field, children, sortAscend, sortDescend }) {
+  let ascend = true;
 
-  const handleSortDescend = () => {
-    sortDescend("id");
+  const handleClick = field => {
+    ascend ? sortAscend(field) : sortDescend(field);
+    ascend = !ascend;
   }
 
   return (
     <th 
       className="table__item table__head-item"
-      onClick={handleSortDescend}
+      onClick={() => {handleClick(field)}}
     >
       {children}
     </th>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableHeadItem);
+export default connect(null, mapDispatchToProps)(TableHeadItem);

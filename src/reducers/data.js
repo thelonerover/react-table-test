@@ -31,18 +31,28 @@ export const data = (state = [], action) => {
   }
 
   if (action.type === actionTypes.sortAscend) {
+    if (!isNaN(+state[0][action.field])) {
+      return [...state.sort((a, b) => (
+        a[action.field]- b[action.field]
+      ))]
+    }
+
     return [...state.sort((a, b) => (
-      a[action.field] - b[action.field]
+      a[action.field].localeCompare(b[action.field])
     ))];
   }
   
   if (action.type === actionTypes.sortDescend) {
+    if (!isNaN(+state[0][action.field])) {
+      return [...state.sort((a, b) => (
+        b[action.field]- a[action.field]
+      ))]
+    }
+
     return [...state.sort((a, b) => (
-      b[action.field] - a[action.field]
+      b[action.field].localeCompare(a[action.field])
     ))];
   }
 
   return state;
 }
-
-// ...action.data.sort((a, b) => (a[action.field] - b[action.field]))
