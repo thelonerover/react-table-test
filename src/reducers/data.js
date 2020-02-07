@@ -29,6 +29,34 @@ export const data = (state = [], action) => {
     case actionTypes.setDataCache:
       return [...action.data];
 
+    default: 
+      return state;
+  }
+}
+
+export const visibleData = (state = [], action) => {
+  if (action.type === actionTypes.setVisibleData) {
+    return [...action.data];
+  }
+
+  switch(action.type) {
+    case actionTypes.setVisibleData:
+      return [...action.data];
+
+    case actionTypes.filterData:
+      if (action.filter !== "") {
+        return [...action.data.filter(item => {
+          for (let field in item) {
+            if (item[field].toLowerCase().includes(action.filter.toLowerCase())) {
+              return true;
+            }
+          }
+          return false;
+        })];
+      } else {
+        return action.data;
+      }
+
     case actionTypes.sortAscend: 
       if (!isNaN(+state[0][action.field])) {
         return [...state.sort((a, b) => (
@@ -50,34 +78,6 @@ export const data = (state = [], action) => {
       return [...state.sort((a, b) => (
         b[action.field].localeCompare(a[action.field])
       ))];
-
-    default: 
-      return state;
-  }
-}
-
-export const visibleData = (state = [], action) => {
-  if (action.type === actionTypes.setVisibleData) {
-    return [...action.data];
-  }
-
-  switch(action.type) {
-    case actionTypes.setVisibleData:
-      return [...action.data];
-
-  case actionTypes.filterData:
-    if (action.filter !== "") {
-      return [...action.data.filter(item => {
-        for (let field in item) {
-          if (item[field].toLowerCase().includes(action.filter.toLowerCase())) {
-            return true;
-          }
-        }
-        return false;
-      })];
-    } else {
-      return action.data;
-    }
 
     default: 
       return state;
