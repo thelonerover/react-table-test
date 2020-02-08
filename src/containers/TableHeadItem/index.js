@@ -23,7 +23,7 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
     if (sortedField !== field) {
       setSortType("unset");
     }
-  });
+  }, [sortedField, field]);
 
   const handleClick = (field, sortType) => {
     handleSortTypes();
