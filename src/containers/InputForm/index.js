@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addDataItem } from "../../actions";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
 import "./inputForm.scss";
 
 const mapStateToProps = state => {
@@ -18,50 +16,82 @@ const mapDispatchToProps = dispatch => {
 }
 
 function InputForm({ addDataItem }) {
-  const formSubmit = async ({ id, firstName, lastName, email, phone }) => {
-    addDataItem({
-      id,
-      firstName,
-      lastName,
-      email,
-      phone
-    });
+  const [formFilled, setformFilled] = useState(false);
+  const [id, setId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    setformFilled(checkFormFill())
+  });
+
+  const formSubmit = (data) => {
+    addDataItem(data);
+  }
+
+  const handleChange = (e, setFieldState) => {
+    setFieldState(e.target.value);
+  }
+
+  const checkFormFill = () => {
+    if (id === "" || firstName === "" || lastName === "" || email === "" || phone === "") {
+      return false;
+    }
+    return true;
   }
 
   return (
     <form className="inputForm">
-      <Input 
+      <input 
         type="text"
+        name="id"
         className="inputForm__input"
         placeholder="id"
+        required={true}
+        onChange={e =>{handleChange(e, setId)}}
       />
-      <Input 
+      <input 
         type="text"
+        name="firstName"
         className="inputForm__input"
         placeholder="Name"
+        required={true}
+        onChange={(e) =>{handleChange(e, setFirstName)}}
       />
-      <Input 
+      <input 
         type="text"
+        name="lastName"
         className="inputForm__input"
         placeholder="Last Name"
+        required={true}
+        onChange={(e) =>{handleChange(e, setLastName)}}
       />
-      <Input 
+      <input 
         type="email"
+        name="email"
         className="inputForm__input"
         placeholder="E-mail"
+        required={true}
+        onChange={(e) =>{handleChange(e, setEmail)}}
       />
-      <Input 
+      <input 
         type="tel"
+        name="phone"
         className="inputForm__input"
         placeholder="Phone"
+        required={true}
+        onChange={(e) =>{handleChange(e, setPhone)}}
       />
-      <Button
+      <button
         type="submit"
+        disabled={formFilled ? false : true}
         onClick={e => {
-          e.preventDefault();
-          formSubmit({id: "12", firstName: 'asd', lastName: 'asd', email: 'asd', phone: 'asd'});
-      }}
-      >Add item</Button>
+            e.preventDefault();
+            formSubmit({id, firstName, lastName, email, phone});
+        }}
+      >Add item</button>
     </form>
   );
 }

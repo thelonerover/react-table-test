@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import Button from "../../components/Button";
 import { filterData } from "../../actions";
 import "./info.scss";
 
@@ -31,10 +30,10 @@ export function Filter({ data, filterItems }) {
                     setText(e.target.value);
                 }}
             />
-            <Button onClick={e => {
+            <button onClick={e => {
                 e.preventDefault();
                 onClick(text);
-            }}>Find</Button>
+            }}>Find</button>
         </div>
     );
 }

@@ -67,7 +67,7 @@ export const visibleData = (state = [], action) => {
       }
 
     case actionTypes.sortAscend: 
-      if (!isNaN(+state[0][action.field])) {
+      if (action.field === "id") {
         return [...state.sort((a, b) => (
           a[action.field]- b[action.field]
         ))]
@@ -78,7 +78,7 @@ export const visibleData = (state = [], action) => {
       ))];
 
     case actionTypes.sortDescend: 
-      if (!isNaN(+state[0][action.field])) {
+    if (action.field === "id") {
         return [...state.sort((a, b) => (
           b[action.field]- a[action.field]
         ))]
