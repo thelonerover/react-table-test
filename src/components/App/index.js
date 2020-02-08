@@ -3,12 +3,14 @@ import Table from "../../containers/Table";
 import Pagination from "../../containers/Pagination";
 import Info from "../../containers/Info";
 import Filter from "../../containers/Filter";
+import InputForm from "../../containers/InputForm";
 import "./App.scss";
 
 function App() {
   return (
     <div className="app">
       <Filter />
+      <InputForm />
       <Table />
       <Pagination />
       <Info />

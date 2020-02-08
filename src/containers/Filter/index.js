@@ -31,7 +31,10 @@ export function Filter({ data, filterItems }) {
                     setText(e.target.value);
                 }}
             />
-            <Button onClick={() => {onClick(text)}}>Find</Button>
+            <Button onClick={e => {
+                e.preventDefault();
+                onClick(text);
+            }}>Find</Button>
         </div>
     );
 }

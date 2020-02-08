@@ -5,16 +5,11 @@ import {
     dataLoaded,
     dataLoadingFailed,
     selectedDataItem,
-    visibleData
-} from './data';
-import { 
+    visibleData,
     currentPage, 
-    setDataPerPage as dataPerPage
-} from "./tableData";
-
-import { 
+    setDataPerPage as dataPerPage,
     sortedField
-} from "./sortedField";
+} from './data';
 
 export default combineReducers({
     dataCache,

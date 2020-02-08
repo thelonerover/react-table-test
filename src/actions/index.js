@@ -12,10 +12,10 @@ export const actionTypes = {
     setSortedField: "SET_SORTED_FIELD",
     getDataItem: "SELECT_DATA_ITEM",
     filterData: "FILTER_DATA",
-    addDataItem: "ADD_DATA_ITEM"
+    addDataCacheItem: "ADD_DATA_CACHE_ITEM"
 };
 
-export const dataFetch = (url) => {
+export const dataFetch = url => {
     return (dispatch) => {
         dispatch(dataIsLoading(true));
 
@@ -64,6 +64,13 @@ export const setDataCache = data => ({
     data
 });
 
+export const addDataCacheItem = dataItem => {
+    return {
+        type: actionTypes.addDataCacheItem,
+        dataItem
+    }
+};
+
 export const setPage = page => ({
     type: actionTypes.setPage,
     page
@@ -107,12 +114,5 @@ export const filterData = (data, filter) => {
         type: actionTypes.filterData,
         filter,
         data
-    }
-};
-
-export const addDataItem = item => {
-    return {
-        type: actionTypes.addDataItem,
-        item
     }
 };

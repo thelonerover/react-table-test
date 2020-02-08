@@ -29,16 +29,15 @@ export const data = (state = [], action) => {
     case actionTypes.setDataCache:
       return [...action.data];
 
+    case actionTypes.addDataCacheItem: 
+      return [action.dataItem, ...state];
+
     default: 
       return state;
   }
 }
 
 export const visibleData = (state = [], action) => {
-  if (action.type === actionTypes.setVisibleData) {
-    return [...action.data];
-  }
-
   switch(action.type) {
     case actionTypes.setVisibleData:
       return [...action.data];
@@ -94,6 +93,30 @@ export const visibleData = (state = [], action) => {
 export const selectedDataItem = (state = {}, action) => {
   if (action.type === actionTypes.getDataItem) {
     return action.dataItem;
+  }
+
+  return state;
+}
+
+export const sortedField = (state = null, action) => {
+  if (action.type === actionTypes.setSortedField) {
+      return action.field;
+  }
+
+  return state;
+}
+
+export const currentPage = (state = 1, action) => {
+  if (action.type === actionTypes.setPage) {
+      return action.page;
+  }
+
+  return state;
+}
+
+export const setDataPerPage = (state = 50, action) => {
+  if (action.type === actionTypes.dataPerPage) {
+      return action.dataPerPage;
   }
 
   return state;
