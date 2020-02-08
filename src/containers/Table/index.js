@@ -19,16 +19,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const testDataUrl = "https://5e3ae184f2cb300014390d21.mockapi.io/users";
-
-const dataUrl = " http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}"
-
-const biggerDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}";
-
-export function Table({ data, dataLoaded, dataLoadingFailed, getData }) {
+export function Table({ dataUrl, dataLoaded, dataLoadingFailed, getData }) {
   useEffect(() => {
     getData(dataUrl);
-  }, [getData]);
+  }, [getData, dataUrl]);
 
   if (dataLoaded) {
     return (

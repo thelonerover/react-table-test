@@ -12,23 +12,23 @@ export function Info({ dataItem }) {
     return (
         <div className="info">
             <span className="info__item">
-                Выбран пользователь: <b>{dataItem && dataItem.firstName}</b>
+                User: <b>{dataItem && dataItem.firstName}</b>
             </span>
             <span className="info__item">
-                Описание:
+                Description:
                 <textarea value={dataItem && dataItem.description}></textarea>
             </span>
             <span className="info__item">
-                Адрес проживания: <b>{dataItem && dataItem.address.streetAddress}</b>
+                Street address: <b>{dataItem && dataItem.address.streetAddress}</b>
             </span>
             <span className="info__item">
-                Город: <b>{dataItem && dataItem.address.city}</b>
+                City: <b>{dataItem && dataItem.address.city}</b>
             </span>
             <span className="info__item">
-                Провинция/штат: <b>{dataItem && dataItem.address.state}</b>
+                State: <b>{dataItem && dataItem.address.state}</b>
             </span>
             <span className="info__item">
-                Индекс: <b>{dataItem && dataItem.address.zip}</b>
+                ZIP: <b>{dataItem && dataItem.address.zip}</b>
             </span>
         </div>
     );

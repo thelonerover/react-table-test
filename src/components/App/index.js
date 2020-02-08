@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../containers/Table";
 import Pagination from "../../containers/Pagination";
 import Info from "../../containers/Info";
@@ -6,14 +6,44 @@ import Filter from "../../containers/Filter";
 import InputForm from "../../containers/InputForm";
 import "./App.scss";
 
+const dataUrl = " http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}"
+
+const moreDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}";
+
 function App() {
+  const [selectedDataUrl, setSelectedDataUrl] = useState("");
+  const [urlSelected, seturlSelected] = useState(false);
+  
+
   return (
     <div className="app">
-      <Filter />
-      <InputForm />
-      <Table />
-      <Pagination />
-      <Info />
+      <div className="container">
+        {
+          urlSelected ? 
+          <div>
+            <Filter />
+            <InputForm />
+            <Table dataUrl={selectedDataUrl} />
+            <Pagination />
+            <Info />
+          </div>
+          :
+          <div>
+            <button
+              onClick={() => {
+                setSelectedDataUrl(dataUrl);
+                seturlSelected(true);
+              }}
+            >Get some data</button>
+            <button
+              onClick={() => {
+                setSelectedDataUrl(moreDataUrl);
+                seturlSelected(true);
+              }}
+            >Get more data</button>
+          </div>
+        }
+      </div>
     </div>
   );
 }
