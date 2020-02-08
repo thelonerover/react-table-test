@@ -46,11 +46,18 @@ export const visibleData = (state = [], action) => {
     case actionTypes.filterData:
       if (action.filter !== "") {
         return [...action.data.filter(item => {
-          for (let field in item) {
-            if (item[field].toLowerCase().includes(action.filter.toLowerCase())) {
-              return true;
-            }
+          //We need to filter data by these fields, right? Or look through all of the items' field? Or I should pass object with fields' names to filter by?
+          //The last way can be more flexible but I'll leave it like this for now.
+          if (
+            item.id.toLowerCase().includes(action.filter.toLowerCase()) ||
+            item.firstName.toLowerCase().includes(action.filter.toLowerCase()) ||
+            item.lastName.toLowerCase().includes(action.filter.toLowerCase()) ||
+            item.email.toLowerCase().includes(action.filter.toLowerCase()) ||
+            item.phone.toLowerCase().includes(action.filter.toLowerCase())
+          ) {
+            return true;
           }
+
           return false;
         })];
       } else {

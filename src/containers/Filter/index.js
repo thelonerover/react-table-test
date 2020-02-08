@@ -31,7 +31,7 @@ export function Filter({ data, filterItems }) {
                     setText(e.target.value);
                 }}
             />
-            <Button onClick={() => {onClick(text)}}>Filter</Button>
+            <Button onClick={() => {onClick(text)}}>Find</Button>
         </div>
     );
 }
