@@ -94,7 +94,7 @@ export const visibleData = (state = [], action) => {
   }
 }
 
-export const selectedDataItem = (state = {}, action) => {
+export const selectedDataItem = (state = null, action) => {
   if (action.type === actionTypes.getDataItem) {
     return action.dataItem;
   }
