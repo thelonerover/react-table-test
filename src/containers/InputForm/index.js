@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addDataCacheItem, setVisibleData } from "../../actions";
+import { addDataItem } from "../../actions";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import "./inputForm.scss";
@@ -13,27 +13,19 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addDataCacheItem: item => {dispatch(addDataCacheItem(item))},
-    setVisibleData: data => {dispatch(setVisibleData(data))}
+    addDataItem: item => {dispatch(addDataItem(item))}
   }
 }
 
-function InputForm({ data, addDataCacheItem, setVisibleData }) {
-  const formSubmit = ({ id, firstName, lastName, email, phone }) => {
-    new Promise(resolve => {
-      const item = {
-        id,
-        firstName,
-        lastName,
-        email,
-        phone
-      };
-
-      resolve(addDataCacheItem(item));
-    })()
-    .then(resolve => {
-      resolve(setVisibleData(data));
-    })
+function InputForm({ addDataItem }) {
+  const formSubmit = async ({ id, firstName, lastName, email, phone }) => {
+    addDataItem({
+      id,
+      firstName,
+      lastName,
+      email,
+      phone
+    });
   }
 
   return (
@@ -67,7 +59,7 @@ function InputForm({ data, addDataCacheItem, setVisibleData }) {
         type="submit"
         onClick={e => {
           e.preventDefault();
-          formSubmit({id: 12, firstName: 'asd', lastName: 'asd', email: 'asd', phone: 'asd'});
+          formSubmit({id: "12", firstName: 'asd', lastName: 'asd', email: 'asd', phone: 'asd'});
       }}
       >Add item</Button>
     </form>

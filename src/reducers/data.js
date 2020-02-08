@@ -42,6 +42,9 @@ export const visibleData = (state = [], action) => {
     case actionTypes.setVisibleData:
       return [...action.data];
 
+    case actionTypes.addVisibleDataItem: 
+      return [action.dataItem, ...state];
+
     case actionTypes.filterData:
       if (action.filter !== "") {
         return [...action.data.filter(item => {

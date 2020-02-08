@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { dataFetch, setDataCache, setVisibleData } from "../../actions";
+import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
 import TableHead from "../../components/TableHead";
 import VisibleTableItems from "../VisibleTableItems";

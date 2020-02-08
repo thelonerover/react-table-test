@@ -12,7 +12,9 @@ export const actionTypes = {
     setSortedField: "SET_SORTED_FIELD",
     getDataItem: "SELECT_DATA_ITEM",
     filterData: "FILTER_DATA",
-    addDataCacheItem: "ADD_DATA_CACHE_ITEM"
+    addDataCacheItem: "ADD_DATA_CACHE_ITEM",
+    addVisibleDataItem: "ADD_VISIBLE_DATA_ITEM",
+    addDataItem: "ADD_DATA_ITEM"
 };
 
 export const dataFetch = url => {
@@ -68,6 +70,20 @@ export const addDataCacheItem = dataItem => {
     return {
         type: actionTypes.addDataCacheItem,
         dataItem
+    }
+};
+
+export const addVisibleDataItem = dataItem => {
+    return {
+        type: actionTypes.addVisibleDataItem,
+        dataItem
+    }
+};
+
+export const addDataItem = (dataItem) => {
+    return dispatch => {
+        dispatch(addDataCacheItem(dataItem));
+        dispatch(addVisibleDataItem(dataItem));
     }
 };
 
