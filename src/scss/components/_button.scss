@@ -1,0 +1,52 @@
+.button {
+    display: block;
+    padding: 22px 82px;
+    font-family: $font;
+    font-size: 20px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    outline: none;
+
+    &_centered {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &_primary {
+        color: $white;
+        background-color: $accent;
+
+        &:hover {
+            background-color: $accent-l;
+        }
+
+        &:active {
+            background-color: $accent-d;
+        }
+
+        &:disabled {
+            color: #333333;
+            background-color: $gray;
+        }
+    }
+
+    &_outlined {
+        border: 2px solid $gray;
+        color: $gray;
+        background: none;
+        box-sizing: content-box;
+
+        &:hover {
+            color: $accent;
+            border-color: $accent;
+            border: 2px solid $accent;
+        }
+
+        &:active {
+            color: $accent-d;
+            border-color: $accent-d;
+            border: 2px solid $accent-d;
+        }
+    }
+}

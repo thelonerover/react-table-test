@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addDataItem } from "../../actions";
-import "./inputForm.scss";
 
 const mapStateToProps = state => {
   return {
@@ -46,13 +45,15 @@ function InputForm({ addDataItem }) {
   return (
     <form className="inputForm">
       <button
+        className="button button_outlined inputForm__button"
         type="button"
         onClick={e => {
             e.preventDefault();
+            e.target.textContent = showFields ? "Show input form" : "Hide input form"
             setshowFields(!showFields);
 
         }}
-      >Add item</button>
+      >Show input form</button>
       {
         showFields && <div className="inputForm__fields">
           <input 
@@ -101,6 +102,7 @@ function InputForm({ addDataItem }) {
             value={phone}
           />
           <button
+            className="button button_primary inputForm__button-primary"
             type="submit"
             disabled={formFilled ? false : true}
             onClick={e => {

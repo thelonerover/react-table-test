@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { filterData } from "../../actions";
-import "./info.scss";
 
 const mapStateToProps = state => {
     return {
@@ -25,15 +24,19 @@ export function Filter({ data, filterItems }) {
     return (
         <div className="filter">
             <input
+                className="filter__input"
                 type="text"
                 onChange={e => {
                     setText(e.target.value);
                 }}
             />
-            <button onClick={e => {
-                e.preventDefault();
-                onClick(text);
-            }}>Find</button>
+            <button 
+                className="button button_primary filter__button"
+                onClick={e => {
+                    e.preventDefault();
+                    onClick(text);
+                }
+            }>Find</button>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import Pagination from "../../containers/Pagination";
 import Info from "../../containers/Info";
 import Filter from "../../containers/Filter";
 import InputForm from "../../containers/InputForm";
-import "./App.scss";
+import "../../scss/main.scss";
 
 const dataUrl = " http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}"
 
@@ -30,12 +30,14 @@ function App() {
           :
           <div>
             <button
+              className="button button_outlined button_centered app__button"
               onClick={() => {
                 setSelectedDataUrl(dataUrl);
                 seturlSelected(true);
               }}
             >Get some data</button>
             <button
+              className="button button_outlined button_centered"
               onClick={() => {
                 setSelectedDataUrl(moreDataUrl);
                 seturlSelected(true);

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./info.scss";
 
 const mapStateToProps = state => {
     return {
@@ -11,25 +10,30 @@ const mapStateToProps = state => {
 export function Info({ dataItem }) {
     return (
         <div className="info">
-            <span className="info__item">
-                User: <b>{dataItem && dataItem.firstName}</b>
-            </span>
-            <span className="info__item">
-                Description:
+            <div className="info__item">
+                <b className="info__title">User:</b>
+                <span className="info__content">{dataItem && dataItem.firstName}</span>
+            </div>
+            <div className="info__item">
+                <b className="info__title">Description:</b>
                 <textarea value={dataItem && dataItem.description}></textarea>
-            </span>
-            <span className="info__item">
-                Street address: <b>{dataItem && dataItem.address.streetAddress}</b>
-            </span>
-            <span className="info__item">
-                City: <b>{dataItem && dataItem.address.city}</b>
-            </span>
-            <span className="info__item">
-                State: <b>{dataItem && dataItem.address.state}</b>
-            </span>
-            <span className="info__item">
-                ZIP: <b>{dataItem && dataItem.address.zip}</b>
-            </span>
+            </div>
+            <div className="info__item">
+                <b className="info__title">Street address:</b>
+                <span className="info__content">{dataItem && dataItem.address.streetAddress}</span>
+            </div>
+            <div className="info__item">
+                <b className="info__title">City:</b>
+                <span className="info__content">{dataItem && dataItem.address.city}</span>
+            </div>
+            <div className="info__item">
+                <b className="info__title">State:</b>
+                <span className="info__content">{dataItem && dataItem.address.state}</span>
+            </div>
+            <div className="info__item">
+                <b className="info__title">ZIP:</b>
+                <span className="info__content">{dataItem && dataItem.address.zip}</span>
+            </div>
         </div>
     );
 }

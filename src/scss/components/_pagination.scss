@@ -1,6 +1,11 @@
 .pagination {
+    text-align: center;
+    margin-bottom: 3.75rem;
+
     &__button {
-        font-size: 1.5rem;
+        display: inline-block;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
         vertical-align: middle;
     }
 

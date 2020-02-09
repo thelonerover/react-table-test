@@ -1,0 +1,15 @@
+.info {
+    &__item {
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        display: block;
+        margin-bottom: .5rem;
+    }
+
+    &__content {
+        display: block;
+        resize: none;
+    }
+}

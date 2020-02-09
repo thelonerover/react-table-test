@@ -1,0 +1,16 @@
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+    font-family: $font;
+    line-height: 1.2;
+    color: $black;
+}
+
+body {
+    margin: 0;
+    background-color: $white;
+}
+
+img {
+    display: block;
+}

@@ -1,0 +1,141 @@
+.h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: $font;
+    font-size: 90px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $white;
+
+    &_accent {
+        color: $accent;
+    }
+
+    &__subtitle {
+        margin: 0;
+        line-height: 1;
+        font-family: $font;
+        font-size: 2.8rem;
+        color: $white;
+        margin-bottom: 50px;
+    }
+}
+
+.h2 {
+    margin-top: 0;
+    margin-bottom: 70px;
+    font-family: $font;
+    font-size: 70px;
+    line-height: 1;
+    color: $accent;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.h3 {
+    margin: 0;
+    font-family: $font;
+    font-size: 70px;
+    line-height: 1;
+    color: $accent;
+    text-transform: uppercase;
+
+    &__subtitle {
+        margin: 0;
+        margin-bottom: 18px;
+        font-family: $font;
+        font-size: 40px;
+        line-height: 1;
+        color: $gray;
+        text-transform: uppercase;
+    }
+}
+
+.h4 {
+    margin: 0;
+    font-family: $font;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $black;
+}
+
+.h4__link {
+    color: $black;
+
+    &:hover {
+        color: $gray;
+        text-decoration: none;
+    }
+}
+
+.p {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-family: $font;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.sign {
+    margin-bottom: 40px;
+    font-family: $font;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.155em;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+    .h3 {
+        text-align: center;
+    
+        &__subtitle {
+            text-align: center;
+        }
+
+    }
+
+    .sign {
+        text-align: center;
+    }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .h1 {
+        font-size: 60px;
+
+        &__subtitle {
+            font-size: 2.8rem;
+        }
+    }
+    
+    .h2 {
+        font-size: 40px;
+        margin-bottom: 36px;
+    }
+    
+    .h3 {
+        font-size: 40px;
+    
+        &__subtitle {
+            font-size: 20px;
+        }
+    }
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}

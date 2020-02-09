@@ -1,13 +1,15 @@
-.table{
+.table {
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
 
     &__head-item {
         cursor: pointer;
         user-select: none;
 
         &:hover {
-            color: #ffffff;
-            background-color: #777777;
+            color: $white;
+            background-color: $accent-l;
         }
     }
 
@@ -24,7 +26,8 @@
     }
 
     &__head-item_active {
-        background-color: #999999;
+        color: $white;
+        background-color: $accent-d;
     }
 
     &__sort {
@@ -43,5 +46,12 @@
         min-width: 8rem;
         padding: .5rem 1rem;
         text-align: left;
+    }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .table {
+        font-size: 0.75rem;
     }
 }

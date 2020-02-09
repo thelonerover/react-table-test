@@ -3,7 +3,6 @@ import { dataFetch } from "../../actions";
 import { connect } from 'react-redux';
 import TableHead from "../../components/TableHead";
 import VisibleTableItems from "../VisibleTableItems";
-import "./table.scss";
 
 const mapStateToProps = ({ dataCache, dataLoaded, dataLoadingFailed }) => {
   return {
