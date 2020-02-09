@@ -16,7 +16,9 @@ export function Info({ dataItem }) {
             </div>
             <div className="info__item">
                 <b className="info__title">Description:</b>
-                <textarea value={dataItem && dataItem.description}></textarea>
+                <textarea 
+                    defaultValue={dataItem ? dataItem.description : ""}
+                ></textarea>
             </div>
             <div className="info__item">
                 <b className="info__title">Street address:</b>
