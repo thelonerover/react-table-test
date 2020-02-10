@@ -16,11 +16,13 @@ const mapDispatchToProps = dispatch => {
 
 function InputForm({ addDataItem }) {
   const [formFilled, setFormFilled] = useState(false);
-  const [id, setId] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [formData, setFormData] = useState({
+    id: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: ""
+  });
   const [showFields, setshowFields] = useState(false);
 
   const formSubmit = (data) => {
@@ -28,8 +30,10 @@ function InputForm({ addDataItem }) {
   }
 
   const checkFormFill = () => {
-    if (id === "" || firstName === "" || lastName === "" || email === "" || phone === "") {
-      return false;
+    for (let field in formData) {
+      if (formData[field] === "") {
+        return false;
+      }
     }
     return true;
   }
@@ -38,8 +42,12 @@ function InputForm({ addDataItem }) {
     setFormFilled(checkFormFill())
   });
 
-  const handleChange = (e, setFieldState) => {
-    setFieldState(e.target.value);
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    console.log(formData);
   }
 
   return (
@@ -62,8 +70,8 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="id"
             required={true}
-            onChange={e =>{handleChange(e, setId)}}
-            value={id}
+            onChange={e =>{handleChange(e)}}
+            value={formData.id}
           />
           <input 
             type="text"
@@ -71,8 +79,8 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Name"
             required={true}
-            onChange={(e) =>{handleChange(e, setFirstName)}}
-            value={firstName}
+            onChange={(e) =>{handleChange(e)}}
+            value={formData.firstName}
           />
           <input 
             type="text"
@@ -80,8 +88,8 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Last Name"
             required={true}
-            onChange={(e) =>{handleChange(e, setLastName)}}
-            value={lastName}
+            onChange={(e) =>{handleChange(e)}}
+            value={formData.lastName}
           />
           <input 
             type="email"
@@ -89,8 +97,8 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="E-mail"
             required={true}
-            onChange={(e) =>{handleChange(e, setEmail)}}
-            value={email}
+            onChange={(e) =>{handleChange(e)}}
+            value={formData.email}
           />
           <input 
             type="tel"
@@ -98,8 +106,8 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Phone"
             required={true}
-            onChange={(e) =>{handleChange(e, setPhone)}}
-            value={phone}
+            onChange={(e) =>{handleChange(e)}}
+            value={formData.phone}
           />
           <button
             className="button button_primary inputForm__button-primary"
@@ -107,7 +115,7 @@ function InputForm({ addDataItem }) {
             disabled={formFilled ? false : true}
             onClick={e => {
                 e.preventDefault();
-                formSubmit({id, firstName, lastName, email, phone});
+                formSubmit(formData);
             }}
           >Add item</button>
         </div>
