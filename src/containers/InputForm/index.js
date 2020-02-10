@@ -47,7 +47,6 @@ function InputForm({ addDataItem }) {
       ...formData,
       [e.target.name]: e.target.value
     });
-    console.log(formData);
   }
 
   return (
