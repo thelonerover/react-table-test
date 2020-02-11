@@ -17,8 +17,12 @@ const mapDispatchToProps = dispatch => {
 export function Filter({ data, filterItems }) {
     const [text, setText] = useState("");
 
-    const onClick = filter => {
+    const filter = filter => {
         filterItems(data, filter);
+    }
+
+    const handleChange = e => {
+        setText(e.target.value);
     }
 
     return (
@@ -26,15 +30,14 @@ export function Filter({ data, filterItems }) {
             <input
                 className="filter__input"
                 type="text"
-                onChange={e => {
-                    setText(e.target.value);
-                }}
+                value={text}
+                onChange={handleChange}
             />
             <button 
                 className="button button_primary filter__button"
                 onClick={e => {
                     e.preventDefault();
-                    onClick(text);
+                    filter(text);
                 }
             }>Find</button>
         </div>

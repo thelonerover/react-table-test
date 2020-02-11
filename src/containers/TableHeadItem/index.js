@@ -25,12 +25,6 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
     }
   }, [sortedField, field]);
 
-  const handleClick = (field, sortType) => {
-    handleSortTypes();
-    setSortedField(field);
-    sortType === "ascend" ? sortAscend(field) : sortDescend(field);
-  }
-
   const handleSortTypes = () => {
     switch(sortType) {
       case "ascend":
@@ -43,6 +37,12 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
         setSortType("ascend");
         break;
     }
+  }
+
+  const handleClick = (field, sortType) => {
+    handleSortTypes();
+    setSortedField(field);
+    sortType === "ascend" ? sortAscend(field) : sortDescend(field);
   }
 
   return (

@@ -69,7 +69,7 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="id"
             required={true}
-            onChange={e =>{handleChange(e)}}
+            onChange={handleChange}
             value={formData.id}
           />
           <input 
@@ -78,7 +78,7 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Name"
             required={true}
-            onChange={(e) =>{handleChange(e)}}
+            onChange={handleChange}
             value={formData.firstName}
           />
           <input 
@@ -87,7 +87,7 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Last Name"
             required={true}
-            onChange={(e) =>{handleChange(e)}}
+            onChange={handleChange}
             value={formData.lastName}
           />
           <input 
@@ -96,7 +96,7 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="E-mail"
             required={true}
-            onChange={(e) =>{handleChange(e)}}
+            onChange={handleChange}
             value={formData.email}
           />
           <input 
@@ -105,7 +105,7 @@ function InputForm({ addDataItem }) {
             className="inputForm__input"
             placeholder="Phone"
             required={true}
-            onChange={(e) =>{handleChange(e)}}
+            onChange={handleChange}
             value={formData.phone}
           />
           <button

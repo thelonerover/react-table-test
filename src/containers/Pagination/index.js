@@ -12,20 +12,20 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onClick: page => dispatch(setPage(page))
+        setCurrentPage: page => dispatch(setPage(page))
     }
 }
 
-function Pagination({ currentPage, pages, onClick }) {
+function Pagination({ currentPage, pages, setCurrentPage }) {
     const handlePrev = () => {
         if(currentPage > 1) {
-            onClick(--currentPage);
+            setCurrentPage(--currentPage);
         }
     }
 
     const handleNext = () => {
         if(currentPage < pages) {
-            onClick(++currentPage);
+            setCurrentPage(++currentPage);
         }
     }
 

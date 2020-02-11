@@ -12,7 +12,7 @@ const moreDataUrl = "http://www.filltext.com/?rows=1000&id={number|1000}&firstNa
 
 function App() {
   const [selectedDataUrl, setSelectedDataUrl] = useState("");
-  const [urlSelected, seturlSelected] = useState(false);
+  const [urlSelected, setUrlSelected] = useState(false);
   
 
   return (
@@ -33,14 +33,14 @@ function App() {
               className="button button_outlined button_centered app__button"
               onClick={() => {
                 setSelectedDataUrl(dataUrl);
-                seturlSelected(true);
+                setUrlSelected(true);
               }}
             >Get some data</button>
             <button
               className="button button_outlined button_centered"
               onClick={() => {
                 setSelectedDataUrl(moreDataUrl);
-                seturlSelected(true);
+                setUrlSelected(true);
               }}
             >Get more data</button>
           </div>
