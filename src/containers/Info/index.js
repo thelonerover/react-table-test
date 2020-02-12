@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => {
     return {
@@ -38,6 +39,10 @@ export function Info({ dataItem }) {
             </div>
         </div>
     );
+}
+
+Info.propTypes = {
+    dataItem: PropTypes.object
 }
 
 export default connect(mapStateToProps, null)(Info);

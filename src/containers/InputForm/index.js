@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addDataItem } from "../../actions";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => {
   return {
@@ -121,6 +122,11 @@ function InputForm({ addDataItem }) {
       }
     </form>
   );
+}
+
+
+InputForm.propTypes = {
+  addDataItem: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputForm);

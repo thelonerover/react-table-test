@@ -2,6 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setPage } from "../../actions";
+import PropTypes from "prop-types"
 
 const mapStateToProps = state => {
     return {
@@ -44,6 +45,12 @@ function Pagination({ currentPage, pages, setCurrentPage }) {
             >Next</button>
       </div>
   );
+}
+
+Pagination.propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    pages: PropTypes.number.isRequired,
+    setCurrentPage: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

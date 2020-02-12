@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TableRow from "../../components/TableRow";
 import { getDataItem } from "../../actions";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => {
     return {
@@ -33,6 +34,11 @@ export function VisibleTableItems({ data, getDataItem }) {
             ))}
         </tbody>
     );
+}
+
+VisibleTableItems.propTypes = {
+    data: PropTypes.array,
+    getDataItem: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VisibleTableItems);

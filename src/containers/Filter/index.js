@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { filterData } from "../../actions";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => {
     return {
@@ -42,6 +43,11 @@ export function Filter({ data, filterItems }) {
             }>Find</button>
         </div>
     );
+}
+
+Filter.propTypes = {
+    data: PropTypes.array,
+    filterItems: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

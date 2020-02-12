@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setSortedField, sortAscend, sortDescend } from "../../actions";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => {
   return {
@@ -54,6 +55,15 @@ function TableHeadItem({ field, children, sortAscend, sortDescend, setSortedFiel
       <span className={`table__sort table__sort_${sortType}`}>▼</span>
     </th>
   );
+}
+
+TableHeadItem.propTypes = {
+  field: PropTypes.string.isRequired,
+  children: PropTypes.string,
+  sortAscend: PropTypes.func.isRequired,
+  sortDescend: PropTypes.func.isRequired,
+  setSortedField: PropTypes.func.isRequired,
+  sortedField: PropTypes.string,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableHeadItem);
