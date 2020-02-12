@@ -50,13 +50,18 @@ function InputForm({ addDataItem }) {
         ...formData,
         [e.target.name]: +e.target.value
       });
-    } else {
-      if (e.target.value.match(/^[a-zA-Z]+$/g)) {
+    } else if (e.target.name === "phone") {
+      if (e.target.value.match(/^[()0-9-]+$/g)) {
         setFormData({
           ...formData,
           [e.target.name]: e.target.value
         });
       }
+    } else if (e.target.value.match(/^[a-zA-Z]+$/g)) {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      });
     }
   }
 
