@@ -30,24 +30,34 @@ function InputForm({ addDataItem }) {
     addDataItem(data);
   }
 
-  const checkFormFill = () => {
-    for (let field in formData) {
-      if (formData[field] === "") {
-        return false;
-      }
-    }
-    return true;
-  }
-
+  
   useEffect(() => {
+    const checkFormFill = () => {
+      for (let field in formData) {
+        if (formData[field] === "") {
+          return false;
+        }
+      }
+      return true;
+    }
+
     setFormFilled(checkFormFill())
-  });
+  }, [formData]);
 
   const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    if (e.target.name === "id") {
+      setFormData({
+        ...formData,
+        [e.target.name]: +e.target.value
+      });
+    } else {
+      if (e.target.value.match(/^[a-zA-Z]+$/g)) {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      }
+    }
   }
 
   return (
@@ -65,7 +75,7 @@ function InputForm({ addDataItem }) {
       {
         showFields && <div className="inputForm__fields">
           <input 
-            type="text"
+            type="number"
             name="id"
             className="inputForm__input"
             placeholder="id"

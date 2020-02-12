@@ -10,7 +10,7 @@ export const actionTypes = {
     sortDescend: "SORT_DESCEND",
     sortAscend: "SORT_ASCEND",
     setSortedField: "SET_SORTED_FIELD",
-    getDataItem: "SELECT_DATA_ITEM",
+    getDataItem: "GET_DATA_ITEM",
     filterData: "FILTER_DATA",
     addDataCacheItem: "ADD_DATA_CACHE_ITEM",
     addVisibleDataItem: "ADD_VISIBLE_DATA_ITEM",
